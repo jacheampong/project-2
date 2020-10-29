@@ -19,7 +19,9 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/'+ 'jo
 // Connect to Mongo
 mongoose.connect(MONGODB_URI ,  { 
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
 });
 // Error / success
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
