@@ -15,4 +15,15 @@ router.get('/new', async (req, res) => {
     res.render('players/new.ejs')
 })
 
+// create route
+router.post('/', async (req, res) => {
+    console.log(req.body)
+    // change radio button value to true/false
+    // before saving to mongoDB
+    req.body.isActive = (req.body.isActive === 'on') ? true : false
+    let player = await Player.create(req.body)
+    let players = await Player.find({})
+    res.render('players/index.ejs', { players });
+});
+
 module.exports = router

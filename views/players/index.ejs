@@ -12,7 +12,9 @@
         <p>No player registered</p>
     <% } else {  %>
         <% players.forEach(player => { %>
-        <a href="/players/<%= player.id %>" ><%= player.name %></a> 
+            <li>
+                <a href="/players/<%= player.id %>" ><%= player.name %></a>
+            </li>
         <% }) %>
     <% } %>
      
