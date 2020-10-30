@@ -17,10 +17,24 @@ router.get('/new', async (req, res) => {
 // player edit view
 router.get('/:id/edit',  async (req, res) => {
     let playerFound = await Player.findById(req.params.id)
+    console.log(playerFound)
     res.render('players/edit.ejs', {
         player: playerFound
     })
 })
+
+// update route
+router.put('/:id', async (req, res) => {
+    console.log(req.body)
+    // change radio button value to true/false
+    // before saving to mongoDB
+    req.body.isActive = (req.body.isActive === 'on') ? true : false
+    let updatePlayer = await Player.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true },)
+    res.redirect('/players');
+});
 
 // create route
 router.post('/', async (req, res) => {
