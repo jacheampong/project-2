@@ -18,4 +18,10 @@ router.get('/new', async (req, res) => {
     })
 })
 
+// create route
+router.post('/', async (req, res) => {
+    let team = await Team.create(req.body);
+    res.redirect(`/teams/${team.id}`);
+});
+
 module.exports = router

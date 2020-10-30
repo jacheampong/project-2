@@ -10,7 +10,7 @@ const teamSchema = new mongoose.Schema({
 
     // embed color in team
     // teamColors: [colorSchema],
-    teamColors: [String],
+    teamColors: { type: String, default: ''},
     players: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Player',
