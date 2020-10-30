@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teams Index Page</title>
+</head>
+<body>
+    <nav></nav>
+    <h1>Teams Index Page</h1>
+    <% if (teams.length === 0) { %>
+        <p>No Teams Available</p>
+    <% } else {  %>
+        <% teams.forEach(team => { %>
+            <li>
+                <a href="/teams/<%= team.id %>" ><%= team.teamName %></a>
+            </li>
+        <% }) %>
+    <% } %>
+     
+</body>
+</html>
