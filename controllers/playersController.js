@@ -36,6 +36,12 @@ router.put('/:id', async (req, res) => {
     res.redirect('/players');
 });
 
+// delete route
+router.delete('/:id', async (req, res) => {
+    let deletedPlayer = await Player.findByIdAndRemove(req.params.id)
+    res.redirect('/players');
+})
+
 // create route
 router.post('/', async (req, res) => {
     console.log(req.body)
