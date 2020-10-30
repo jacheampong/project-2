@@ -9,7 +9,6 @@ router.get('/', async (req, res) => {
     res.render('players/index.ejs', { players });
 })
 
-
 // new page route 
 router.get('/new', async (req, res) => {
     res.render('players/new.ejs')
@@ -22,8 +21,7 @@ router.post('/', async (req, res) => {
     // before saving to mongoDB
     req.body.isActive = (req.body.isActive === 'on') ? true : false
     let player = await Player.create(req.body)
-    let players = await Player.find({})
-    res.render('players/index.ejs', { players });
+    res.redirect('/players');
 });
 
 module.exports = router
