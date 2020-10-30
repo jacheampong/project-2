@@ -47,9 +47,13 @@ app.get('/' , (req, res) => {
   res.send('Hello World!');
 });
 
-// Controllers
+// Players Controller
 const playersController = require('./controllers/playersController')
 app.use('/players', playersController)
+
+// Teams Controller
+const teamsController = require('./controllers/teamsController')
+app.use('/teams', teamsController)
 
 //___________________
 //Listener
