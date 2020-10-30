@@ -24,6 +24,7 @@ router.post('/', async (req, res) => {
     res.redirect('/players');
 });
 
+// player show route 
 router.get('/:id',  async (req, res) => {
     let playerFound = await Player.findById(req.params.id)
     res.render('players/show.ejs', {
