@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Information</title>
+</head>
+<body>
+    <div>
+        <h1>Team Show Page</h1>
+        <fieldset>
+            <legend><a href="/teams/<%= team.id %>/edit"><%= team.teamName %></a> Information</legend>
+            Name: <a href="/teams/<%= team.id %>/edit"><%= team.teamName %></a> <br>
+            Manager: <%= team.manager %> <br>
+            Team colors: [<%= team.teamColors %>]<br>
+        </fieldset>
+        <fieldset>
+            <legend>Current Players</legend>
+            <ul>
+            <% team.players.forEach(player => { %>
+                <li><a href="/players/<%= player.id %>/edit"><%= player.name %></a></li>
+            <% }) %>
+            </ul>
+        </fieldset>
+    </div>
+</body>
+</html>

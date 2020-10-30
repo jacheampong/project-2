@@ -18,6 +18,15 @@ router.get('/new', async (req, res) => {
     })
 })
 
+// team show route
+router.get('/:id', async (req, res) => {
+    let team = await Team.findById(req.params.id).populate('players');
+    console.log(team);
+    res.render('teams/show.ejs', { 
+        team,
+    })
+})
+
 // create route
 router.post('/', async (req, res) => {
     let team = await Team.create(req.body);
