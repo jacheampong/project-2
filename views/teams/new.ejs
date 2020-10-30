@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team New Page</title>
+</head>
+<body>
+    <div>
+        <h1>Team New Page</h1>
+        <form action="/teams" method="POST" >
+            <fieldset>
+                <legend>Team Information</legend>
+                <label for="teamName">Name: </label>
+                <input type="text" id="teamName" name="teamName" required /> <br>
+                <label for="manager">Manager: </label>
+                <input type="text" id="manager" name="manager" required /> <br>
+                <label for="teamColors">Colors: </label>
+                <input type="text" id="teamColors" name="teamColors" required /> <br>
+            </fieldset>
+                
+            <fieldset>
+                <legend>Available Players</legend>
+                <% players.forEach(player => { %>
+                    <input
+                        type="checkbox"
+                        id="<%= player.name %>"
+                        name="players"
+                        value="<%= player.id %>"
+                    />
+                    <label for="<%= player.name %>"><%= player.name %>: <%= player.jersey %></label><br />
+                <% }) %>
+            </fieldset>
+            
+            <input type="submit" value="Submit">
+        </form>
+
+    </div>
+    
+    
+</body>
+</html>
