@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player New Page</title>
+</head>
+<body>
+    <div>
+        <h1>Player New Page</h1>
+        <form action="/players" method="POST" >
+            <fieldset>
+                <legend>Player Profile</legend>
+                <label for="name">Name: </label>
+                <input type="text" id="name" name="name" required /> <br>
+                <label for="position">Position: </label>
+                <select name="position" id="position" required >
+                    <option value="">--Select a position--</option>
+                    <option value="goalkeeper">Goal keeper</option>
+                    <option value="defender">Defender</option>
+                    <option value="midfielder">Midfielder</option>
+                    <option value="attacker">Attacker</option>
+                </select> 
+                <br>
+                <label for="jersey">Jersey #: </label>
+                <input type="text" id="jersey" name="jersey" /> <br>
+                <label for="isActive">Active</label>
+                <input type="radio" id="isActive" name="isActive" /> <br>
+
+                <input type="submit" value="Submit">
+            </fieldset>
+        </form>
+
+    </div>
+    
+    
+</body>
+</html>

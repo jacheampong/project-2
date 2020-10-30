@@ -9,4 +9,10 @@ router.get('/', async (req, res) => {
     res.render('players/index.ejs', { players });
 })
 
+
+// new page route 
+router.get('/new', async (req, res) => {
+    res.render('players/new.ejs')
+})
+
 module.exports = router
