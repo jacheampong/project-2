@@ -14,6 +14,14 @@ router.get('/new', async (req, res) => {
     res.render('players/new.ejs')
 })
 
+// player edit view
+router.get('/:id/edit',  async (req, res) => {
+    let playerFound = await Player.findById(req.params.id)
+    res.render('players/edit.ejs', {
+        player: playerFound
+    })
+})
+
 // create route
 router.post('/', async (req, res) => {
     console.log(req.body)

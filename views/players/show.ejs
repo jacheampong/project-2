@@ -12,7 +12,11 @@
             Name: <%= player.name %> <br>
             Position: <%= player.position %> <br>
             Jersey No.: <%= player.jersey %> <br>
-            Active: <%= player.isActive %>
+            Active: <% if(player.isActive === true) { %>
+                 ✓ 
+            <% } else { %> 
+                ✕
+            <% } %> 
         </fieldset>
     </div>
     
