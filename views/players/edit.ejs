@@ -16,14 +16,32 @@
                 <label for="position">Position: </label>
                 <select name="position" id="position" required  >
                     <option value="">--Select a position--</option>
-                    <option value="goalkeeper">Goal keeper</option>
-                    <option value="defender">Defender</option>
-                    <option value="midfielder">Midfielder</option>
-                    <option value="attacker">Attacker</option>
+                    <option 
+                        value="goalkeeper"
+                        <% if (player.position === "goalkeeper") { %>
+                            selected
+                        <% } %> >Goal keeper</option>
+                    <option 
+                        value="defender"
+                        <% if (player.position === "defender") { %>
+                            selected
+                        <% } %> >Defender</option>
+                    <option 
+                        value="midfielder"
+                        <% if (player.position === "midfielder") { %>
+                            selected
+                        <% } %> >Midfielder</option>
+                    <option 
+                        value="attacker"
+                        <% if (player.position === "attacker") { %>
+                            selected
+                        <% } %> >Attacker</option>
                 </select> 
                 <br>
                 <label for="jersey">Jersey #: </label>
                 <input type="text" id="jersey" name="jersey" value="<%= player.jersey %>" /> <br>
+                <label for="team">Team: </label>
+                <input type="text" id="team" name="team" value="<%= player.team %>" /> <br>
                 <label for="isActive">Active</label>
                 <input 
                     type="checkbox" 
