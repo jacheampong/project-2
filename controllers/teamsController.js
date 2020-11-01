@@ -33,4 +33,10 @@ router.post('/', async (req, res) => {
     res.redirect(`/teams/${team.id}`);
 });
 
+// delete route
+router.delete('/:id', async (req, res) => {
+    await Team.findByIdAndDelete(req.params.id);
+    res.redirect('/teams');
+});
+
 module.exports = router
