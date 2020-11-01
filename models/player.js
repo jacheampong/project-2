@@ -4,6 +4,7 @@ const playerSchema = new mongoose.Schema({
     name: { type: String, required: true },
     position: { type: String, default: '', },
     jersey: { type: String, default: '', },
+    team: { type: String, default: '', },
     isActive: Boolean
 })
 

@@ -12,6 +12,7 @@
             Name: <%= player.name %> <br>
             Position: <%= player.position %> <br>
             Jersey No.: <%= player.jersey %> <br>
+            Team: <%= player.team ? player.team : 'Not assigned' %> <br>
             Active: <% if(player.isActive === true) { %>
                  ✓ 
             <% } else { %> 
