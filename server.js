@@ -4,7 +4,8 @@
 const express = require('express');
 const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
-const app = express ();
+const { use } = require('./controllers/playersController');
+const app = express();
 const db = mongoose.connection;
 //___________________
 //Port
@@ -35,7 +36,7 @@ db.on('open' , ()=>{});
 //use public folder for static assets
 app.use(express.static('public'));
 // populates req.body with parsed info from forms - if no data from forms will return an empty object {}
-app.use(express.urlencoded({ extended: false }));// extended: false - does not allow nested objects in query strings
+app.use(express.urlencoded({ extended: true }));// extended: false - does not allow nested objects in query strings
 app.use(express.json());// returns middleware that only parses JSON - may or may not need it depending on your project
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
@@ -54,6 +55,10 @@ app.use('/players', playersController)
 // Teams Controller
 const teamsController = require('./controllers/teamsController')
 app.use('/teams', teamsController)
+
+// Users Controller
+const usersController = require('./controllers/usersController')
+app.use('/users', usersController)
 
 //___________________
 //Listener
