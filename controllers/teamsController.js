@@ -33,6 +33,17 @@ router.post('/', async (req, res) => {
     res.redirect(`/teams/${team.id}`);
 });
 
+// edit route
+router.get('/:id/edit', async (req, res) => {
+    let team = await Team.findById(req.params.id).populate('players');
+    let players = await Player.find({})
+    console.log(team);
+    res.render('teams/edit.ejs', { 
+        team,
+        players,
+    })
+})
+
 // delete route
 router.delete('/:id', async (req, res) => {
     await Team.findByIdAndDelete(req.params.id);
