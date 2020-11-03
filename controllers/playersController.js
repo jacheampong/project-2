@@ -2,29 +2,53 @@ const router = require('express').Router();
 
 const Player = require('../models/player')
 
+const isAuthenticated = (req, res, next) => {
+    if (req.session.currentUser) {
+        return next()
+    } else {
+        res.redirect('/sessions/new')
+    }
+}
+
 // players index page
-router.get('/', async (req, res) => {
+router.get('/', isAuthenticated, async (req, res) => {
     let players = await Player.find({})
+    let activePlayers = players.filter(player => {
+        return player.isActive === true
+    })
+    console.log(activePlayers)
+    let notActivePlayers = players.filter(player => {
+        return player.isActive !== true
+    })
+    console.log(notActivePlayers)
     // console.log(players)
-    res.render('players/index.ejs', { players });
+    res.render('players/index.ejs', { 
+        players,
+        activePlayers,
+        notActivePlayers,
+        currentUser: req.session.currentUser 
+    });
 })
 
 // new page route 
-router.get('/new', async (req, res) => {
-    res.render('players/new.ejs')
+router.get('/new', isAuthenticated, async (req, res) => {
+    res.render('players/new.ejs', {
+        currentUser: req.session.currentUser
+    })
 })
 
 // player edit view
-router.get('/:id/edit',  async (req, res) => {
+router.get('/:id/edit', isAuthenticated,  async (req, res) => {
     let playerFound = await Player.findById(req.params.id)
     console.log(playerFound)
     res.render('players/edit.ejs', {
-        player: playerFound
+        player: playerFound,
+        currentUser: req.session.currentUser
     })
 })
 
 // update route
-router.put('/:id', async (req, res) => {
+router.put('/:id', isAuthenticated, async (req, res) => {
     console.log(req.body)
     // change radio button value to true/false
     // before saving to mongoDB
@@ -37,13 +61,13 @@ router.put('/:id', async (req, res) => {
 });
 
 // delete route
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', isAuthenticated, async (req, res) => {
     let deletedPlayer = await Player.findByIdAndRemove(req.params.id)
     res.redirect('/players');
 })
 
 // create route
-router.post('/', async (req, res) => {
+router.post('/', isAuthenticated, async (req, res) => {
     console.log(req.body)
     // change radio button value to true/false
     // before saving to mongoDB
@@ -53,10 +77,11 @@ router.post('/', async (req, res) => {
 });
 
 // player show route 
-router.get('/:id',  async (req, res) => {
+router.get('/:id', isAuthenticated,  async (req, res) => {
     let playerFound = await Player.findById(req.params.id)
     res.render('players/show.ejs', {
-        player: playerFound
+        player: playerFound,
+        currentUser: req.session.currentUser
     })
 })
 
