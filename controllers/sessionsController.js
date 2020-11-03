@@ -30,7 +30,7 @@ router.post('/', (req, res) => {
       res.send('oops the db had a problem')
     } else if (!foundUser) {
       // if found user is undefined/null not found etc
-      res.send('<a  href="/">Sorry, no user found </a>')
+      res.send('<a  href="/sessions/new">Sorry, no user found </a>')
     } else {
       // user is found yay!
       // now let's check if passwords match
@@ -41,7 +41,7 @@ router.post('/', (req, res) => {
         res.redirect('/')
       } else {
         // passwords do not match
-        res.send('<a href="/"> password does not match </a>')
+        res.send('<a href="/sessions/new"> password does not match </a>')
       }
     }
   })
