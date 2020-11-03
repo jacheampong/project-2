@@ -6,17 +6,27 @@
     <title>Players Index</title>
 </head>
 <body>
-    <nav></nav>
-    <h1>Players Index Page</h1>
-    <% if (players.length === 0) { %>
-        <p>No player registered</p>
-    <% } else {  %>
-        <% players.forEach(player => { %>
+    <div>
+        <h1>Players Index Page</h1>
+        <h3>Active Players</h3>
+        <% if (players.length === 0) { %>
+            <p>No player registered</p>
+        <% } else {  %>
+            <% activePlayers.forEach(player => { %>
+                <li>
+                    <a href="/players/<%= player.id %>" ><%= player.name %></a>
+                </li>
+            <% }) %>
+        <% } %>
+
+        <h3>Non Active Players</h3>
+        <% notActivePlayers.forEach(player => { %>
             <li>
                 <a href="/players/<%= player.id %>" ><%= player.name %></a>
             </li>
         <% }) %>
-    <% } %>
+    </div>
+    
      
 </body>
 </html>
