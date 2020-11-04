@@ -1,0 +1,11 @@
+/* font-family: 'Electrolize', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
+
+/* font-family: 'Allerta Stencil', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap');
+
+
+.player-image {
+    width: 200px;
+    height: 200px;
+}
