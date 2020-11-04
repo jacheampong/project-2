@@ -6,17 +6,27 @@
     <title>Teams Index Page</title>
 </head>
 <body>
-    <nav></nav>
-    <h1>Teams Index Page</h1>
-    <% if (teams.length === 0) { %>
-        <p>No Teams Available</p>
-    <% } else {  %>
-        <% teams.forEach(team => { %>
-            <li>
-                <a href="/teams/<%= team.id %>" ><%= team.teamName %></a>
-            </li>
-        <% }) %>
-    <% } %>
+    <div>
+        <nav></nav>
+        <h1>Teams Index Page</h1>
+        <% if (teams.length === 0) { %>
+            <p>No Teams Available</p>
+        <% } else {  %>
+            <% teams.forEach(team => { %>
+                <li>
+                    <a href="/teams/<%= team.id %>" ><%= team.teamName %></a>
+                </li>
+            <% }) %>
+        <% } %>
+    </div>
+     <p>
+         <button type="button" name="button">
+            <a href="/">Home</a>
+        </button>
+        <button type="button" name="button">
+            <a href="teams/new">Create New Team</a>
+        </button>
+     </p>
      
 </body>
 </html>
