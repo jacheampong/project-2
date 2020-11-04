@@ -5,6 +5,7 @@ const playerSchema = new mongoose.Schema({
     position: { type: String, default: '', },
     jersey: { type: String, default: '', },
     team: { type: String, default: '', },
+    image: { type: String, default: 'default', },
     isActive: Boolean
 })
 
