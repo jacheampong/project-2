@@ -10,9 +10,7 @@
         <h1>Player Edit Page</h1>
         <form action="/players/<%=player.id%>?_method=PUT" method="POST" >
             <fieldset>
-                <legend>Player Profile</legend>
-                <label for="name">Name: </label>
-                <input type="text" id="name" name="name" required value="<%=player.name%>" /> <br>
+                <legend><%= player.name %>'s Profile</legend>
                 <label for="position">Position: </label>
                 <select name="position" id="position" required  >
                     <option value="">--Select a position--</option>
@@ -42,6 +40,8 @@
                 <input type="text" id="jersey" name="jersey" value="<%= player.jersey %>" /> <br>
                 <label for="team">Team: </label>
                 <input type="text" id="team" name="team" value="<%= player.team %>" /> <br>
+                <label for="image">Image: </label>
+                <input type="text" id="image" name="image" value="<%= player.image %>" /> <br>
                 <label for="isActive">Active</label>
                 <input 
                     type="checkbox" 
