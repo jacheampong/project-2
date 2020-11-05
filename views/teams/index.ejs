@@ -4,27 +4,27 @@
     <%- include ('../partials/head.ejs') %>
 </head>
 <body>
-    <div>
-        <nav></nav>
-        <h1>Teams Index Page</h1>
+    <div class="container blue-text text-darken-4"">
+        <!-- nav begins -->
+        <%- include ('../partials/nav.ejs') %>
+        <!-- nav ends -->
+        <h3>Available Teams</h3>
         <% if (teams.length === 0) { %>
             <p>No Teams Available</p>
         <% } else {  %>
             <% teams.forEach(team => { %>
-                <li>
-                    <a href="/teams/<%= team.id %>" ><%= team.teamName %></a>
-                </li>
+                <a class="indigo-text text-darken-4" href="/teams/<%= team.id %>" >
+                    <%= team.teamName %>
+                </a> <br>
+                <div class="divider"></div>
             <% }) %>
         <% } %>
+        <p>
+            <a href="/" class="waves-effect waves-light btn"><i class="material-icons">home </i></a>
+            <a href="teams/new" class="waves-effect waves-light btn"><i class="material-icons">person_add</i></a>
+        </p>
     </div>
-     <p>
-         <button type="button" name="button">
-            <a href="/">Home</a>
-        </button>
-        <button type="button" name="button">
-            <a href="teams/new">Create New Team</a>
-        </button>
-     </p>
      
+    <%- include ('../partials/foot.ejs') %>
 </body>
 </html>

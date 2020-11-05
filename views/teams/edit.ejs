@@ -2,65 +2,72 @@
 <html lang="en">
 <head>
     <%- include ('../partials/head.ejs') %>
+    <link rel="stylesheet" href="/../css/styles.css">
 </head>
 <body>
-    <div>
-        <h1>Team Edit Page</h1>
-        <form action="/teams/<%=team.id%>?_method=PUT" method="POST" >
-            <fieldset>
-                <legend><%= team.teamName %> Information</legend>
-                <label for="teamName">Name: </label>
-                <input type="text" id="teamName" name="teamName" required value="<%= team.teamName %>" /> <br>
-                <label for="manager">Manager: </label>
-                <input type="text" id="manager" name="manager" required value="<%= team.manager %>" /> <br>
-                <label for="teamColors">Teams Colors: </label>
-                <input type="text" id="teamColors" name="teamColors" value="<%= team.teamColors %>" /> <br>
-            </fieldset>
-            <br>
-            <fieldset>
-                <legend>Current Players</legend>
-                <% team.players.forEach(player => { %>
-                    <input
-                        type="checkbox"
-                        id="<%= player.name %>"
-                        name="players"
-                        value="<%= player.id %>"
-                        <% if (player.isActive === true) { %>
-                            checked
-                        <% } %>
-                    />
-                    <label for="<%= player.name %>"><%= player.name %>: <%= player.jersey %></label><br />
-                <% }) %>
-            </fieldset>
-            
-            <fieldset>
-                <legend>Availible Players</legend>
-                <ul>
-                <% players.forEach(player => { %>
-                    <input
-                        type="checkbox"
-                        id="<%= player.name %>"
-                        name="players"
-                        value="<%= player.id %>"
-                    />
-                    <label for="<%= player.name %>"><%= player.name %>: <%= player.jersey %></label><br />
-                    
-                <% }) %>
-                </ul>
+    
+    <div class="container blue-text text-darken-4">
+        <%- include ('../partials/nav.ejs') %>
+        <div class="row blue-text text-darken-4">
+            <h3>Team Edit Page</h3>
+            <form action="/teams/<%=team.id%>?_method=PUT" method="POST" >
+                <fieldset class="blue-text text-darken-4">
+                    <legend><%= team.teamName %> Information</legend>
+                    <label for="teamName">Name: </label>
+                    <input disabled type="text" id="teamName" name="teamName" required value="<%= team.teamName %>" /> <br>
+                    <label for="manager">Manager: </label>
+                    <input type="text" id="manager" name="manager" required value="<%= team.manager %>" /> <br>
+                    <label for="teamColors">Teams Colors: </label>
+                    <input type="text" id="teamColors" name="teamColors" value="<%= team.teamColors %>" /> <br>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Current Players</legend>
+                    <% team.players.forEach(player => { %>
+                        <p class="blue-text text-darken-4">
+                            <label for="<%= player.name %>">
+                            <input
+                                type="checkbox"
+                                id="<%= player.name %>"
+                                name="players"
+                                value="<%= player.id %>"
+                                checked="checked"
+                            />
+                            <span class="blue-text text-darken-4"><%= player.name %>: <%= player.jersey %></span>
+                            </label>
+                        </p>
+                    <% }) %>
+                </fieldset>
                 
-            </fieldset>
+                <fieldset>
+                    <legend>Availible Players</legend>
+                    <ul>
+                    <% players.forEach(player => { %>
+                        <p>
+                            <label for="<%= player.name %>">
+                                <input
+                                    type="checkbox"
+                                    id="<%= player.name %>"
+                                    name="players"
+                                    value="<%= player.id %>"
+                                />
+                              <span class="blue-text text-darken-4"><%= player.name %>: <%= player.jersey %></span>
+                            </label>
+                        </p>
+                    <% }) %>
+                    </ul>
+                </fieldset>
+                <br>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
             <br>
-            <input type="submit" value="Submit">
-        </form>
-        
-        <br>
-        <form action="/teams/<%=team.id%>?_method=DELETE" method="POST">
-            <input type="submit" value="DELETE" />
-        </form>
-        <br>
-        <button type="button" name="button">
-            <a href="/teams/<%=team.id%>">Back</a>
-        </button>
+            <a href="/teams/<%=team.id%>" class="waves-effect waves-light btn">Cancel</a>
+            
+        </div>
     </div>
+    
+    <%- include ('../partials/foot.ejs') %>
 </body>
 </html>

@@ -4,30 +4,37 @@
     <%- include ('../partials/head.ejs') %>
 </head>
 <body>
-    <div>
-        <h1>Team Show Page</h1>
+    <div class="container blue-text text-darken-4">
+        <!-- nav begins -->
+        <%- include ('../partials/nav.ejs') %>
+        <!-- nav ends -->
+        <h3><%= team.teamName %></h3>
         <fieldset>
             <legend><a href="/teams/<%= team.id %>/edit"><%= team.teamName %></a> Information</legend>
             Name: <a href="/teams/<%= team.id %>/edit"><%= team.teamName %></a> <br>
             Manager: <%= team.manager %> <br>
-            Team colors: [<%= team.teamColors %>]<br>
+            Team colors: <%= team.teamColors %><br>
         </fieldset>
         <fieldset>
             <legend>Current Players</legend>
             <ul>
             <% team.players.forEach(player => { %>
-                <li><a href="/players/<%= player.id %>/edit"><%= player.name %></a></li>
+                <li><%= player.name %>: #<%= player.jersey %><br></li>
             <% }) %>
             </ul>
         </fieldset>
         <br>
-        <form action="/teams/<%=team.id%>?_method=DELETE" method="POST">
-            <input type="submit" value="DELETE" />
-        </form>
-        <br>
-        <button type="button" name="button">
-            <a href="/teams">Back</a>
-        </button>
+
+        <a href="/teams" class="waves-effect waves-light btn"><i class="material-icons">arrow_back</i></a>
+        <a href="/" class="waves-effect waves-light btn"><i class="material-icons">home</i></a>
+        <a class="waves-effect waves-light btn">
+            <form action="/teams/<%=team.id%>?_method=DELETE" method="POST">
+                <input type="submit" value="DEL" />
+            </form>
+        </a>
+
     </div>
+
+    <%- include ('../partials/foot.ejs') %>
 </body>
 </html>
