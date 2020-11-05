@@ -53,4 +53,11 @@ router.delete('/', (req, res) => {
   })
 })
 
+router.get('/logout', (req, res) => {
+  console.log('logged out')
+  req.session.destroy(() => {
+    res.redirect('/')
+  })
+})
+
 module.exports = router
