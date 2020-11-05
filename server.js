@@ -52,9 +52,19 @@ app.use(
 //___________________
 // Routes
 //___________________
+
+const isAuthenticated = (req, res, next) => {
+  if (req.session.currentUser) {
+      return next()
+  } else {
+      res.redirect('/sessions/new')
+  }
+}
+
 //localhost:3000
-app.get('/' , (req, res) => {
-  res.send('Hello World!');
+app.get('/', isAuthenticated, (req, res) => {
+  // res.send('Hello World!');
+  res.render('home.ejs')
 });
 
 // Players Controller
