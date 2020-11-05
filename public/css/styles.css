@@ -4,8 +4,9 @@
 /* font-family: 'Allerta Stencil', sans-serif; */
 @import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap');
 
-
-.player-image {
-    width: 200px;
-    height: 200px;
+body {
+    background: url('../images/field-image-2.jpg');
+    background-size: cover;
+    background-color: rgba(255,255,255,0.486);
+    background-blend-mode: soft-light;
 }
