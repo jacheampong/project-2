@@ -4,29 +4,63 @@
     <%- include ('../partials/head.ejs') %>
 </head>
 <body>
-    <div>
-        <h1>Players Index Page</h1>
-        <h3>Active Players</h3>
+    <div class="container">
+        <!-- nav begins -->
+        <nav>
+            <div class="nav-wrapper">
+              <a href="#!" class="brand-logo">Logo</a>
+              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+              <ul class="right hide-on-med-and-down">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="badges.html">Components</a></li>
+                <li><a href="collapsible.html">Javascript</a></li>
+                <li><a href="mobile.html">Mobile</a></li>
+              </ul>
+              <ul class="sidenav" id="mobile-demo">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="badges.html">Components</a></li>
+                <li><a href="collapsible.html">Javascript</a></li>
+                <li><a href="mobile.html">Mobile</a></li>
+              </ul>
+            </div>
+          </nav>
+        <!-- nav ends -->
+
+        <h3>All Active Players</h3>
         <% if (players.length === 0) { %>
             <p>No player registered</p>
         <% } else {  %>
-            <% activePlayers.forEach(player => { %>
-                <li>
-                    <a href="/players/<%= player.id %>" ><%= player.name %></a>
-                </li>
-            <% }) %>
+            <ul class="collection">
+                <% activePlayers.forEach(player => { %>
+                    <li class="collection-item avatar">
+                        <img class="circle" src="/images/<%= player.image %>.jpg" alt="<%= player.name %>"> <br>
+                        <span class="title"><a href="/players/<%= player.id %>" ><%= player.name %></a></span>
+                        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                    </li>
+                <% }) %>
+            </ul>
         <% } %>
 
         <h3>Non Active Players</h3>
-        <% notActivePlayers.forEach(player => { %>
-            <li>
-                <a href="/players/<%= player.id %>" ><%= player.name %></a>
-            </li>
-        <% }) %>
+        <ul class="collection">
+            <% notActivePlayers.forEach(player => { %>
+                <li class="collection-item avatar">
+                    <img class="circle" src="/images/<%= player.image %>.jpg" alt="<%= player.name %>"> <br>
+                    <span class="title"><a href="/players/<%= player.id %>" ><%= player.name %></a></span>
+                    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                </li>
+            <% }) %>
+        </ul>
+
+        <p>
+            <a href="/" class="waves-effect waves-light btn"><i class="material-icons">home</i></a>
+            <a href="players/new" class="waves-effect waves-light btn"><i class="material-icons">person_add</i></a>
+        </p>
     </div>
-    <br>
-    <button type="button" name="button">
-        <a href="/">Home</a>
-    </button>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+                
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </body>
 </html>

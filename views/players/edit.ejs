@@ -4,62 +4,75 @@
     <%- include ('../partials/head.ejs') %>
 </head>
 <body>
-    <div>
-        <h1>Player Edit Page</h1>
-        <form action="/players/<%=player.id%>?_method=PUT" method="POST" >
-            <fieldset>
-                <legend><%= player.name %>'s Profile</legend>
-                <label for="position">Position: </label>
-                <select name="position" id="position" required  >
-                    <option value="">--Select a position--</option>
-                    <option 
-                        value="goalkeeper"
-                        <% if (player.position === "goalkeeper") { %>
-                            selected
-                        <% } %> >Goal keeper</option>
-                    <option 
-                        value="defender"
-                        <% if (player.position === "defender") { %>
-                            selected
-                        <% } %> >Defender</option>
-                    <option 
-                        value="midfielder"
-                        <% if (player.position === "midfielder") { %>
-                            selected
-                        <% } %> >Midfielder</option>
-                    <option 
-                        value="attacker"
-                        <% if (player.position === "attacker") { %>
-                            selected
-                        <% } %> >Attacker</option>
-                </select> 
-                <br>
-                <label for="jersey">Jersey #: </label>
-                <input type="text" id="jersey" name="jersey" value="<%= player.jersey %>" /> <br>
-                <label for="team">Team: </label>
-                <input type="text" id="team" name="team" value="<%= player.team %>" /> <br>
-                <label for="image">Image: </label>
-                <input type="text" id="image" name="image" value="<%= player.image %>" /> <br>
-                <label for="isActive">Active</label>
-                <input 
-                    type="checkbox" 
-                    id="isActive" 
-                    name="isActive"
-                    <% if (player.isActive === true) { %>
-                        checked
-                    <% } %> 
-                 /> <br>
-
-                <input type="submit" value="Submit">
-            </fieldset>
-        </form>
-        <br>
-        <button type="button" name="button">
-            <a href="/players/<%=player.id%>">Back</a>
-        </button>
-
+    <div class="container" >
+        <div class="row">
+            <div class="col s12 m7">
+              <div class="card">
+                <div class="card-image">
+                  <img class="player-image" src="/images/<%= player.image %>.jpg" alt="<%= player.name %>"> <br>
+                  <span class="card-title"><%= player.name %></span>
+                </div>
+                <div class="card-content">
+                    <p>
+                        <form action="/players/<%=player.id%>?_method=PUT" method="POST" >
+                            <fieldset>
+                                <legend><%= player.name %>'s Profile</legend>
+                                <label for="position">Position: </label>
+                                <select name="position" id="position" required  class="browser-default" >
+                                    <option value="">--Select a position--</option>
+                                    <option 
+                                        value="goalkeeper"
+                                        <% if (player.position === "goalkeeper") { %>
+                                            selected
+                                        <% } %> >Goal keeper</option>
+                                    <option 
+                                        value="defender"
+                                        <% if (player.position === "defender") { %>
+                                            selected
+                                        <% } %> >Defender</option>
+                                    <option 
+                                        value="midfielder"
+                                        <% if (player.position === "midfielder") { %>
+                                            selected
+                                        <% } %> >Midfielder</option>
+                                    <option 
+                                        value="attacker"
+                                        <% if (player.position === "attacker") { %>
+                                            selected
+                                        <% } %> >Attacker</option>
+                                </select> 
+                                <br>
+                                <label for="jersey">Jersey #: </label>
+                                <input type="text" id="jersey" name="jersey" value="<%= player.jersey %>" /> <br>
+                                <label for="team">Team: </label>
+                                <input type="text" id="team" name="team" value="<%= player.team %>" /> <br>
+                                <label for="image">Image: </label>
+                                <input type="text" id="image" name="image" value="<%= player.image %>" /> <br>
+                                <label for="isActive">
+                                    <input
+                                        type="checkbox"
+                                        id="isActive"
+                                        name="isActive"
+                                        <% if (player.isActive === true) { %>
+                                            checked="checked"
+                                        <% } %>
+                                    />
+                                    <span>Active</span>
+                                </label>
+                            </fieldset>
+                            <br>
+                            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </form>
+                        <br>
+                        <a href="/players/<%=player.id%>" class="waves-effect waves-light btn">Cancel</a>
+                    </p>
+                </div>
+              </div>
+            </div>
+          </div>
     </div>
-    
     
 </body>
 </html>

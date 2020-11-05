@@ -4,36 +4,49 @@
     <%- include ('../partials/head.ejs') %>
 </head>
 <body>
-    <div class="player-profile">
-        <fieldset>
-            <legend><%= player.name %>'s Profile</legend>
-            <img class="player-image" src="../images/<%= player.image %>.jpg" alt="<%= player.name %>"> <br>
-            Name: <%= player.name %> <br>
-            Position: <%= player.position %> <br>
-            Jersey No.: <%= player.jersey %> <br>
-            Team: <%= player.team ? player.team : 'Not assigned' %> <br>
-            Active: <% if(player.isActive === true) { %>
-                 ✓ 
-            <% } else { %> 
-                ✕
-            <% } %> 
-        </fieldset>
-        <p>
-            <button type="button" name="button"><a href="/players/<%=player._id%>/edit">Edit</a></button>
-            <form action="/players/<%= player._id %>?_method=DELETE" method="POST">
-                <input type="submit" value="DELETE"/>
-            </form>
-        </p>
-        
-        <!-- <br> -->
-        <button type="button" name="button">
-            <a href="/players">Back</a>
-        </button>
-        <!-- <br> -->
-        <button type="button" name="button">
-            <a href="/">Home</a>
-        </button>
+    <!-- container begins -->
+    <div class="container">
+
+        <div class="row">
+            <div class="col s12 m6">
+            <!-- card class begins -->
+              <div class="card hoverable">
+                <div class="card-image">
+                  <img class="player-image" src="../images/<%= player.image %>.jpg" alt="<%= player.name %>"> <br>
+                  <span class="card-title"><%= player.name %></span>
+                  <a href="/players/<%=player._id%>/edit" class="btn-floating halfway-fab waves-effect waves-light red">
+                      <i class="material-icons">edit</i>
+                  </a>
+                </div>
+                <div class="card-content">
+                  <p>
+                    <fieldset>
+                        <legend><%= player.name %>'s Profile</legend>
+                        Name: <a href="/players/<%=player._id%>/edit"><%= player.name %></a> <br>
+                        Position: <%= player.position %> <br>
+                        Jersey No.: <%= player.jersey %> <br>
+                        Team: <%= player.team ? player.team : 'Not assigned' %> <br>
+                        Active: <% if(player.isActive === true) { %>
+                             ✓ 
+                        <% } else { %> 
+                            ✕
+                        <% } %> 
+                    </fieldset>
+                  </p>
+                </div>
+                <a href="/players" class="waves-effect waves-light btn"><i class="material-icons">arrow_back</i></a>
+                <a href="/" class="waves-effect waves-light btn"><i class="material-icons">home</i></a>
+                <a class="waves-effect waves-light btn">
+                    <form action="/players/<%=player.id%>?_method=DELETE" method="POST">
+                        <input type="submit" value="DEL" />
+                    </form>
+                </a>
+              </div>
+              <!-- card class begins -->
+            </div>
+          </div>
     </div>
+    <!-- container ends -->
     
 </body>
 </html>
