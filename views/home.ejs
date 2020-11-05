@@ -1,17 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <%- include ('partials/head.ejs') %>
-</head>
-<body>
-    <div>
-        <h1>PMA Home Page</h1>
-        <p>
-            <a href="/teams">Team List</a>
-        </p>
-        <p>
-            <a href="/players">Player List</a>
-        </p>
+  </head>
+  <body>
+    <div class="container">
+        <%- include ('partials/nav.ejs') %>
+      <h3>Home Page</h3>
+
+      <div class="row">
+        <div class="col s6">
+          <div class="card-panel hoverable">
+            <ul class="collection">
+              <li class="collection-item avatar">
+                <span class="title">
+                  <a href="/teams">
+                    ALL TEAMS
+                    <img src="../images/all-teams.jpg" alt="" class="circle" />
+                  </a>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col s6">
+          <div class="card-panel hoverable">
+            <ul class="collection">
+              <li class="collection-item avatar">
+                <span class="title">
+                  <a href="/players">
+                    ALL PLAYERS
+                    <img src="../images/players.jpg" alt="" class="circle" />
+                  </a>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
