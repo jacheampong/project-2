@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 const Team = require('./models/team.js')
 const Player = require('./models/player.js')
 
-const mongoURI = 'mongodb://localhost:27017/jon-project2';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/'+ 'jon-project2';
 
 mongoose.connect(
-    mongoURI,
+    MONGODB_URI,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -14,7 +14,7 @@ mongoose.connect(
       useCreateIndex: true,
     },
     () => {
-      console.log('the connection with mongod is established at', mongodbURI)
+      console.log('the connection with mongod is established at', MONGODB_URI)
     }
 );
 
