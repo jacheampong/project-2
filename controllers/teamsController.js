@@ -69,7 +69,21 @@ router.put('/:id', isAuthenticated, async (req, res) => {
 
 // create route
 router.post('/', isAuthenticated, async (req, res) => {
-    let team = await Team.create(req.body);
+    let team = await Team.create(req.body)
+
+    // update player model 
+    await team.players.forEach(async player => {
+        try{
+            let newPlayer = await Player.findByIdAndUpdate(player, {
+                team: team.teamName},
+                {new: true},)
+                // console.log(newPlayer)
+        } 
+        catch(err) {
+            console.log(err) 
+        }
+    })
+
     res.redirect(`/teams/${team.id}`);
 });
 
